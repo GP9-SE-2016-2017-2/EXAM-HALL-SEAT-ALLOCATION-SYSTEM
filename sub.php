@@ -110,11 +110,42 @@ border: 2px solid rgba(81, 203, 238, 1);
   font-size: 15.3px;
 }
 
+
 .navbar-default{
-    background-color: #efeff4;
-    border-color: #efeff4;
-    color: #FFFFFF;
+    background-color: #4373a7;
+    border-color: #4373a7;
+    border-radius: 0;
   }
+  .navbar-default .navbar-brand,
+  .navbar-default .navbar-brand:hover,
+  .navbar-default .navbar-brand:focus{
+    color: #FFF;
+  }
+  .navbar-default .navbar-nav > li > a {
+    color: #FFF;
+  }
+  .navbar-default .navbar-nav > li > a:hover,
+  .navbar-default .navbar-nav > li > a:focus{
+    background-color: #428bca;
+  }
+  .navbar-default .navbar-nav > .active > a,
+  .navbar-default .navbar-nav > .active > a:hover,
+  .navbar-default .navbar-nav > .active > a:focus{
+    color: #FFF;
+    background-color: #428bca;
+  }
+  .navbar-default .navbar-text{
+    color: #FFF;
+  }
+  .navbar-default .navbar-toggle{
+    background-color: #428bca;
+  }
+  .navbar-default .navbar-toggle:hover,
+  .navbar-default .navbar-toggle:focus{
+    background-color: #428bca;
+  }
+
+
  
   </style>
 
@@ -158,10 +189,10 @@ border: 2px solid rgba(81, 203, 238, 1);
     <div class="col-md-1"></div>
     <div class="col-md-1">
       <form class="myform container" action="sub" method="post">
-  Course Code:<br><input type="text" name="cid"><br>
-  Name:<br><input type="text" name="name"><br>
+  Course Code:<br><input type="text" required="required" name="cid"><br>
+  Name:<br><input type="text" name="name" required="required"><br>
  <br>
-  <input class="btn btn-default" type="submit" value="Submit" name="submit">
+  <input class="btn btn-primary" type="submit" value="Submit" name="submit">
 </form>
     </div>
   </div>
@@ -171,12 +202,14 @@ border: 2px solid rgba(81, 203, 238, 1);
 <input type="text" placeholder="Search Course ID or Name"  name="search"><p><p>
 <input class="btn btn-default" type="submit" value="Search" name="button">
 </form><br>
-    <table class="table">
-    <tr>
+<div class="panel panel-primary">
+  <div class="panel-heading">COURSE</div>
+    <table class="table table-striped ">
+    <tr class="info">
     <th>Course Code</th>
     <th>Name</th>
-    <th>Edit</th>
     <th>Delete</th>
+    <th>Edit</th>
     <th>Allocate</th>
     </tr>
     
@@ -200,9 +233,9 @@ if (mysql_num_rows($query) > 0) {
     echo "<tr>
           <td>".$row['cid']."</td>
           <td>".$row['Name']."</td>
-          <td><a href='sub?id=".$row[0]."'>Delete</a></td>
-          <td><a href='editsub?edit=$row[id]'>Edit</a></td>
-          <td><a href='allocatehall?edit=$row[id]'>Allocate</a></td>
+          <td><a href='sub?id=".$row[0]."'><button type='button' class='btn btn-danger btn-sm '>Delete</button></a></td>
+          <td><a href='editsub?edit=$row[id]'><button type='button' class='btn btn-default btn-sm'>Edit</button></a></td>
+          <td><a href='allocatehall?edit=$row[id]'><button type='button' class='btn btn-default btn-sm'>Allocate</button></a></td>
           </tr>";
   }
 }
@@ -220,9 +253,9 @@ else{
     echo "<tr>
           <td>".$row['cid']."</td>
           <td>".$row['Name']."</td>
-          <td><a href='sub?id=".$row[0]."'>Delete</a></td>
-          <td><a href='editsub?edit=$row[id]'>Edit</a></td>
-          <td><a href='allocatehall?edit=$row[id]'>Allocate</a></td>
+          <td><a href='sub?id=".$row[0]."'><button type='button' class='btn btn-danger btn-sm '>Delete</button></a></td>
+          <td><a href='editsub?edit=$row[id]'><button type='button' class='btn btn-default btn-sm'>Edit</button></a></td>
+          <td><a href='allocatehall?edit=$row[id]'><button type='button' class='btn btn-default btn-sm'>Allocate</button></a></td>
           </tr>";
   }
 
@@ -230,7 +263,7 @@ else{
    ?>
     
     </table>
-
+</div>
   </div>
 </div>
 
