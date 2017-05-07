@@ -1,3 +1,5 @@
+create a file with .htaccess extension and copy the code below
+
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-d
